@@ -7,7 +7,7 @@
 // @grant       none
 // @run-at      document-end
 // @author      Starknight
-// @version     1.0.0
+// @version     2.0.1
 // ==/UserScript==
 const addYouButton = function (postCell) {
     const extraMenuButton = postCell.querySelector('.innerPost label.extraMenuButton');
