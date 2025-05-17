@@ -7,7 +7,7 @@
 // @grant       none
 // @run-at      document-end
 // @author      Starknight
-// @version     2.0.1
+// @version     2.1.0
 // ==/UserScript==
 
 // Copyright 2025 Starknights
@@ -60,6 +60,12 @@ const addYouButton = function (postCell) {
         for (quote of quoteLinks) {
             if ('>>' + postId === quote.innerText) {
                 quote.classList.add('you');
+
+                const span = document.createElement('span');
+                span.classList.add('qmark-you');
+                span.innerHTML = '(You)';
+
+                quote.append(span);
             }
         }
 
@@ -67,6 +73,9 @@ const addYouButton = function (postCell) {
         if (postName) {
             postName.classList.add('youName');
         }
+
+        const innerPost = postCell.querySelector('.innerPost');
+        innerPost.classList.add('yourPost');
     };
     youButton.addEventListener('click', markPostAsYou);
 
