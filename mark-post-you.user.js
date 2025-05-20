@@ -7,7 +7,7 @@
 // @grant       none
 // @run-at      document-end
 // @author      Starknight
-// @version     2.1.0
+// @version     2.1.1
 // ==/UserScript==
 
 // Copyright 2025 Starknights
@@ -66,6 +66,8 @@ const addYouButton = function (postCell) {
                 span.innerHTML = '(You)';
 
                 quote.append(span);
+
+                quote.parentNode.parentNode.classList.add('quotesYou');
             }
         }
 
