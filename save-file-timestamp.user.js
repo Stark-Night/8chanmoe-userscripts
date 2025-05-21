@@ -29,6 +29,8 @@
 // CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
+let fileCounter = 1;
+
 const addDownloadButton = function (cell) {
     const hideFileButton = cell.querySelector('span.hideFileButton');
     if (!hideFileButton) {
@@ -50,8 +52,10 @@ const addDownloadButton = function (cell) {
     }
 
     const serverExt = '.' + hrefSplit.pop();
-    const timeName = (window.performance.timing.navigationStart +
-                      window.performance.now()) / 0.001;
+    const timeName = ((window.performance.timing.navigationStart +
+                       window.performance.now()) / 0.001) + fileCounter;
+
+    fileCounter = fileCounter + 1;
 
     const downloadButton = document.createElement('a');
     downloadButton.href = originalNameLink.href;
