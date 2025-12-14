@@ -7,7 +7,7 @@
 // @grant       none
 // @run-at      document-end
 // @author      Starknight
-// @version     1.0.0
+// @version     1.1.0
 // ==/UserScript==
 
 // Copyright 2025 Starknights
@@ -45,8 +45,11 @@ const createHoverPreview = function (event) {
         container = document.createElement('video');
         container.autoplay = true;
         container.loop = true;
+        container.style.maxWidth = '720px';
+        container.dataset.type = 'video';
     } else {
         container = document.createElement('img');
+        container.dataset.type = 'image';
     }
 
     container.id = 'pcgiaImageHoverPreview';
@@ -72,8 +75,17 @@ const positionHoverPreview = function (event) {
         return;
     }
 
-    const ex = event.pageX + 10;
+    let ex = event.clientX + 20;
     const ey = event.pageY - elem.offsetHeight / 2;
+    let ew = parseInt(window.getComputedStyle(elem).width, 10);
+
+    if ('video' === elem.dataset.type && elem.readyState < elem.HAVE_FUTURE_DATA) {
+        ew = 720;
+    }
+
+    if (ex + ew >= window.innerWidth - 20) {
+        ex = event.clientX - 20 - ew;
+    }
 
     elem.style.top = ey + 'px';
     elem.style.left = ex + 'px';
