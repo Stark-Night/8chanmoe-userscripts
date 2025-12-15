@@ -7,7 +7,7 @@
 // @grant       none
 // @run-at      document-end
 // @author      Starknight
-// @version     1.1.0
+// @version     1.1.1
 // ==/UserScript==
 
 // Copyright 2025 Starknights
@@ -45,7 +45,6 @@ const createHoverPreview = function (event) {
         container = document.createElement('video');
         container.autoplay = true;
         container.loop = true;
-        container.style.maxWidth = '720px';
         container.dataset.type = 'video';
     } else {
         container = document.createElement('img');
@@ -55,6 +54,7 @@ const createHoverPreview = function (event) {
     container.id = 'pcgiaImageHoverPreview';
     container.src = href;
     container.style.position = 'absolute';
+    container.style.maxWidth = '1121px';
     container.style.maxHeight = '100%';
 
     document.body.append(container);
