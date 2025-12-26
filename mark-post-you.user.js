@@ -3,11 +3,11 @@
 // @namespace   pcgia
 // @description Mark a post as (You) on 8chanmoe
 // @match       https://8chan.moe/*/res/*
-// @match       https://8chan.se/*/res/*
+// @match       https://8chan.st/*/res/*
 // @grant       none
 // @run-at      document-end
 // @author      Starknight
-// @version     2.1.1
+// @version     2.1.2
 // ==/UserScript==
 
 // Copyright 2025 Starknights

@@ -3,11 +3,11 @@
 // @namespace   pcgia
 // @description Make sure quick reply is cleared on 8chanmoe
 // @match       https://8chan.moe/*/res/*
-// @match       https://8chan.se/*/res/*
+// @match       https://8chan.st/*/res/*
 // @grant       none
 // @run-at      document-end
 // @author      Starknight
-// @version     2.0.1
+// @version     2.0.2
 // ==/UserScript==
 
 // Copyright 2025 Starknights

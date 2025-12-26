@@ -3,11 +3,11 @@
 // @namespace   pcgia
 // @description Display image preview following mouse cursor when hovering a file
 // @match       https://8chan.moe/*/res/*
-// @match       https://8chan.se/*/res/*
+// @match       https://8chan.st/*/res/*
 // @grant       none
 // @run-at      document-end
 // @author      Starknight
-// @version     1.1.1
+// @version     1.1.2
 // ==/UserScript==
 
 // Copyright 2025 Starknights

@@ -3,11 +3,11 @@
 // @namespace   pcgia
 // @description Adds a button to download a file and gives it a timestamp name, instead of the original name or the hash
 // @match       https://8chan.moe/*/res/*
-// @match       https://8chan.se/*/res/*
+// @match       https://8chan.st/*/res/*
 // @grant       none
 // @run-at      document-end
 // @author      Starknight
-// @version     2.0.2
+// @version     2.0.3
 // ==/UserScript==
 
 // Copyright 2025 Starknights
