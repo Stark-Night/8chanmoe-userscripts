@@ -78,13 +78,15 @@ const positionHoverPreview = function (event) {
     let ex = event.clientX + 20;
     const ey = event.pageY - elem.offsetHeight / 2;
     let ew = parseInt(window.getComputedStyle(elem).width, 10);
+    const cutoff = window.innerWidth - 20;
+    const exoff = event.clientX - 20 - ew;
 
     if ('video' === elem.dataset.type && elem.readyState < elem.HAVE_FUTURE_DATA) {
         ew = 720;
     }
 
-    if (ex + ew >= window.innerWidth - 20) {
-        ex = event.clientX - 20 - ew;
+    if (ex + ew >= cutoff && exoff > -(ew / 2)) {
+        ex = exoff;
     }
 
     elem.style.top = ey + 'px';
