@@ -7,7 +7,7 @@
 // @grant       none
 // @run-at      document-end
 // @author      Starknight
-// @version     1.1.2
+// @version     1.1.3
 // ==/UserScript==
 
 // Copyright 2025 Starknights
