@@ -7,10 +7,10 @@
 // @grant       none
 // @run-at      document-end
 // @author      Starknight
-// @version     1.1.3
+// @version     1.1.4
 // ==/UserScript==
 
-// Copyright 2025 Starknights
+// Copyright 2025-2026 Starknights
 //
 // Permission is hereby granted, free of charge, to any person
 // obtaining a copy of this software and associated documentation
@@ -29,6 +29,8 @@
 // CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
+const hoverPreviewCache = {};
+
 const createHoverPreview = function (event) {
     const videoExt = ['webm', 'mp4'];
     // the audio list is not very reliable but what can you do
@@ -41,36 +43,48 @@ const createHoverPreview = function (event) {
     }
 
     let container = null;
-    if (videoExt.includes(hrefExt)) {
-        container = document.createElement('video');
-        container.autoplay = true;
-        container.loop = true;
-        container.dataset.type = 'video';
-    } else {
-        container = document.createElement('img');
-        container.dataset.type = 'image';
-    }
+    if (!hoverPreviewCache[href]) {
+        if (videoExt.includes(hrefExt)) {
+            container = document.createElement('video');
+            container.autoplay = true;
+            container.loop = true;
+            container.dataset.type = 'video';
+        } else {
+            container = document.createElement('img');
+            container.dataset.type = 'image';
+        }
 
-    container.id = 'pcgiaImageHoverPreview';
-    container.src = href;
-    container.style.position = 'absolute';
-    container.style.maxWidth = '1121px';
-    container.style.maxHeight = '100%';
+        container.classList.add('pcgiaImageHoverPreview');
+        container.src = href;
+        container.style.position = 'absolute';
+        container.style.maxWidth = '1121px';
+        container.style.maxHeight = '100%';
+
+        hoverPreviewCache[href] = container;
+    } else {
+        container = hoverPreviewCache[href];
+        if ('video' === container.dataset.type) {
+            container.play();
+        }
+    }
 
     document.body.append(container);
 };
 
 const destroyHoverPreview = function (event) {
-    const elem = document.getElementById('pcgiaImageHoverPreview');
+    const elem = document.querySelector('.pcgiaImageHoverPreview');
     if (!elem) {
         return;
     }
 
+    if ('video' === elem.dataset.type) {
+        elem.pause();
+    }
     elem.remove();
 };
 
 const positionHoverPreview = function (event) {
-    const elem = document.getElementById('pcgiaImageHoverPreview');
+    const elem = document.querySelector('.pcgiaImageHoverPreview');
     if (!elem) {
         return;
     }
